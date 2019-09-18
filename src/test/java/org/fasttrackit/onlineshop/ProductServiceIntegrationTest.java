@@ -42,7 +42,7 @@ public class ProductServiceIntegrationTest {
 
         Product creatProduct = createProduct();
 
-        Product retrievedProduct = productServices.getProduct(creatProduct.getId());
+        Product retrievedProduct = productServices.getProductById(creatProduct.getId());
         assertThat(retrievedProduct, notNullValue());
         assertThat(retrievedProduct.getId(), is(creatProduct.getId()));
         assertThat(retrievedProduct.getName(), is(creatProduct.getName()));
@@ -51,7 +51,7 @@ public class ProductServiceIntegrationTest {
 
     @Test(expected = ResourcesNotFoundException.class)
     public void testGetProduct_whenNonExistingEntity_thenThrowNotFoundException() {
-        productServices.getProduct(999999);
+        productServices.getProductById(999999);
     }
 
     @Test
